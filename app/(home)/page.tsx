@@ -10,6 +10,7 @@ import ExpertCarousel from './Carsole1';
 import ClaimOffer from './ClaimOffer';
 import FAQ from './FAQ';
 import HomeworkHelp from './HomeWorkHelp';
+import Login from '@/components/Login';
 
 export default function HomePage({ searchParams }: { searchParams: { showTutor?: string } }) {
     const showTutor = searchParams?.showTutor === 'true' || false;
@@ -25,16 +26,19 @@ export default function HomePage({ searchParams }: { searchParams: { showTutor?:
                 <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 z-0 pointer-events-none"></div> {/* Ensure background is non-interactive */}
                 <div className="relative z-10">
                     <NavBar showTutor={showTutor} />
-                    {showTutor && (
-                        <div>
-                            <h2 className="text-lg font-bold text-white">Find Tutor</h2>
-                            <TutorForm />
-                        </div>
-                    )}
                 </div>
                 <div className="left-0 z-30 w-3/5 p-8"> {/* Increased z-index to ensure HomeworkHelp is on top */}
                     <HomeworkHelp />
                 </div>
+                    {showTutor && (
+                        <div className="fixed inset-0 flex items-center justify-center z-50">
+                            <div className="bg-black opacity-50 absolute inset-0"></div> {/* Optional backdrop */}
+                            <div className="relative z-10">
+                                <h2 className="text-lg font-bold text-white mb-4">Find Tutor</h2>
+                                <TutorForm />
+                        </div>
+                            </div>
+                    )}
                 <div className="absolute bottom-0 right-0 z-10 pointer-events-none"> {/* Ensure image is non-interactive */}
                     <img src={homePageMan.src} alt="Home Page Man" className="w-120 h-auto mr-28" />
                 </div>
@@ -89,6 +93,7 @@ export default function HomePage({ searchParams }: { searchParams: { showTutor?:
                     {/* Add your content for "FAQ" here */}
                 </div>
             </div>
+            {/* <Login/> */}
         </div>
     );
 }

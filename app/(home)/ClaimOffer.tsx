@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { FlagIcon } from "lucide-react";
+import { FlagIcon, Phone } from "lucide-react";
+import PhoneInputt from "@/components/PhoneInput";
 
 export default function ClaimOffer() {
   return (
@@ -19,10 +20,8 @@ export default function ClaimOffer() {
         <h2 className="text-xl font-bold">30% OFF & 150% Cashback On Your First Order!</h2>
         <p className="text-gray-600 mt-2">Type your WhatsApp Number to get an exclusive Code.</p>
         
-        <div className="flex items-center border rounded-md mt-4 p-2">
-          <FlagIcon className="text-gray-500" size={20} />
-          <span className="ml-2 text-gray-600">+1</span>
-          <Input className="ml-2 flex-1 border-none outline-none" placeholder="Enter your WhatsApp number" />
+        <div className="flex items-center mt-4 w-full">
+          <PhoneInputt />
         </div>
         
         <Button className="bg-purple-600 text-white w-full mt-4">Get Offer on WhatsApp</Button>

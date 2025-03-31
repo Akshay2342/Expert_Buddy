@@ -6,14 +6,18 @@ import React from 'react';
 
 const Page = async () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const response = await fetch(`${baseUrl}/api/TutorsData`);
+  let mockTutors = [];
 
-  if (!response.ok) {
-    console.error('Failed to fetch tutors:', response.statusText);
-    return <div>Error loading tutors</div>;
+  try {
+    const response = await fetch(`${baseUrl}/api/TutorsData`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch tutors: ${response.statusText}`);
+    }
+    mockTutors = await response.json();
+  } catch (error) {
+    console.error('Error fetching tutors:', error);
+    mockTutors = []; // Provide an empty fallback or mock data if needed
   }
-
-  const mockTutors = await response.json();
 
   return (
     <div className='bg-[#F5F3EF] min-h-screen'>

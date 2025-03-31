@@ -6,14 +6,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 
-function Calendar({
+interface CalendarProps {
+  selected: Date | null;
+  onSelect: (day: Date | undefined) => void;
+  className?: string;
+  showOutsideDays?: boolean;
+}
+
+export const Calendar: React.FC<CalendarProps> = ({
+  selected,
+  onSelect,
   className,
   showOutsideDays = true,
   ...props
-}: {
-  className?: string
-  showOutsideDays?: boolean
-}) {
+}) => {
   const [currentDate, setCurrentDate] = React.useState(new Date())
 
   const daysInMonth = (date: Date) => {
@@ -55,6 +61,7 @@ function Calendar({
             buttonVariants({ variant: "ghost" }),
             "w-8 h-8 text-sm"
           )}
+          onClick={() => onSelect(new Date(currentDate.getFullYear(), currentDate.getMonth(), day))}
         >
           {day}
         </button>
@@ -101,5 +108,3 @@ function Calendar({
     </div>
   )
 }
-
-export { Calendar }

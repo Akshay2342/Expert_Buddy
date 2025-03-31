@@ -8,11 +8,20 @@ import SubjectFilter from "./SubjectFilter";
 import SearchFilter from "./SearchFilter";
 
 export default async function ActiveProjects({ searchParams = {} }: { searchParams?: { subject?: string } }) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   const selectedSubject = searchParams.subject || "all";
-
-  const response = await fetch(`${baseUrl}/api/HomeWork`);
-  const homeWorks = await response.json();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"; // Use environment variable for flexibility
+  let homeWorks;
+  try {
+    const response = await fetch(`${baseUrl}/api/HomeWork`);
+  
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+    }
+  
+    homeWorks = await response.json();
+  } catch (error) {
+    console.error("Error fetching homework data:",  error);
+  }
 
   const filteredHomeWorks = selectedSubject === "all"
     ? homeWorks

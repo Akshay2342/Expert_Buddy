@@ -8,7 +8,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ProfileCalendar() {
-  const [date, setDate] = useState(new Date("2024-12-19"));
+  const [date, setDate] = useState<Date | null>(new Date("2024-12-19"));
 
   return (
     <div className="space-y-2 w-80">
@@ -47,9 +47,8 @@ export default function ProfileCalendar() {
         </div>
         <CardContent className="p-0">
           <Calendar
-            mode="single"
             selected={date}
-            onSelect={(day) => day && setDate(day)}
+            onSelect={(day: Date | undefined) => day && setDate(day)}
             className="border-none"
           />
         </CardContent>

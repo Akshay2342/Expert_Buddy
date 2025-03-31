@@ -6,9 +6,7 @@ import React from 'react';
 
 const Page = async () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const response = await fetch(`${baseUrl}/api/TutorsData`, {
-    cache: 'no-store', // Ensure fresh data is fetched on every request
-  });
+  const response = await fetch(`${baseUrl}/api/TutorsData`);
 
   if (!response.ok) {
     console.error('Failed to fetch tutors:', response.statusText);

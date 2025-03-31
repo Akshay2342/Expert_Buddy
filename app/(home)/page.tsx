@@ -12,8 +12,9 @@ import FAQ from './FAQ';
 import HomeworkHelp from './HomeWorkHelp';
 import Login from '@/components/Login';
 
-export default function HomePage({ searchParams }: { searchParams: { showTutor?: string } }) {
-    const showTutor = searchParams?.showTutor === 'true';
+export default async function HomePage({ searchParams }: { searchParams: { showTutor?: string; login?: string } }) {
+    const showTutor = await searchParams?.showTutor === 'true';
+    const showLogin = await searchParams?.login === 'true';
 
     return (
         <div className="min-h-screen overflow-y-auto scrollbar-hide scroll-smooth"> {/* Added scroll-smooth */}
@@ -93,7 +94,11 @@ export default function HomePage({ searchParams }: { searchParams: { showTutor?:
                     {/* Add your content for "FAQ" here */}
                 </div>
             </div>
-            {/* <Login/> */}
+            {showLogin && (
+                <div className="fixed inset-0 flex items-center justify-center z-[100]">
+                    <Login />
+                </div>
+            )}
         </div>
     );
 }

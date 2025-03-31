@@ -67,10 +67,12 @@ export default function NavBar() {
                           className="rounded-full cursor-pointer"
                         />
                     </div>
+                    <Link href='/?login=true'>
                     <Avatar className="cursor-pointer">
                         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
                         <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
+                    </Link>
                 </div>
             </div>
         </nav>

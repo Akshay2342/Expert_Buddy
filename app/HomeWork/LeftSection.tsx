@@ -9,7 +9,7 @@ import SearchFilter from "./SearchFilter";
 
 export default async function ActiveProjects({ searchParams = {} }: { searchParams?: { subject?: string } }) {
   const selectedSubject = searchParams.subject || "all";
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"; // Use environment variable for flexibility
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL ; // Use environment variable for flexibility
   let homeWorks;
   try {
     const response = await fetch(`${baseUrl}/api/HomeWork`);
@@ -21,6 +21,7 @@ export default async function ActiveProjects({ searchParams = {} }: { searchPara
     homeWorks = await response.json();
   } catch (error) {
     console.error("Error fetching homework data:",  error);
+    homeWorks = []; // Use fallback data
   }
 
   const filteredHomeWorks = selectedSubject === "all"

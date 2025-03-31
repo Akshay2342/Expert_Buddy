@@ -12,7 +12,7 @@ const ProgressComponent = () => {
               </div>
               <span className={`mt-2 text-sm ${index <= 1 ? 'text-purple-600 font-semibold' : 'text-gray-500'}`}>{step}</span>
             </div>
-            {index < array.length - 1 && (
+            {index < array?.length - 1 && (
               <div
                 className={`flex-1 h-1 mx-2 ${
                   index <= 0 ? 'bg-purple-600' : 'bg-gray-300'

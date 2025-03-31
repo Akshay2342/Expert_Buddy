@@ -5,7 +5,7 @@ import ProjectDetailsForm from '@/components/ProjectDetailsEdit';
 import React from 'react';
 
 const Page = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
   let mockTutors = [];
 
   try {

@@ -20,7 +20,7 @@ const HomeWorkCard = ({ title, deadline, bids, price, tags }: { title: string; d
             </div>
             <h2 className="text-lg font-semibold text-purple-800">{title}</h2>
             <div className="flex flex-wrap gap-2">
-              {(tags && tags.length > 0) ? (
+              {(tags && tags?.length > 0) ? (
                 tags.map((tag, index) => (
                   <Badge key={index} variant="secondary" className="text-sm">
                     {tag}

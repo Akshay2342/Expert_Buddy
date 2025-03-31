@@ -12,7 +12,7 @@ import {
   AvatarImage,
 } from "../ui/avatar"
 
-export default function NavBar({ showTutor }: { showTutor: boolean }) {
+export default function NavBar() {
     return (
         <nav className="flex flex-wrap items-center justify-between bg-white shadow-md px-4 py-2 border border-blue-300">
             {/* Left Section: Logo and "Buddy" */}
